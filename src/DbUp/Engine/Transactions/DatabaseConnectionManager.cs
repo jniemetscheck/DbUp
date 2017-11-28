@@ -35,7 +35,8 @@ namespace DbUp.Engine.Transactions
             {
                 {TransactionMode.NoTransaction, ()=>new NoTransactionStrategy()},
                 {TransactionMode.SingleTransaction, ()=>new SingleTrasactionStrategy()},
-                {TransactionMode.TransactionPerScript, ()=>new TransactionPerScriptStrategy()}
+                {TransactionMode.TransactionPerScript, ()=>new TransactionPerScriptStrategy()},
+                {TransactionMode.TransactionByConvention, ()=>new TransactionByConventionStrategry()},
             };
         }
 

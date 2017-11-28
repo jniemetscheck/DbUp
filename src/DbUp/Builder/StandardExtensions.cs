@@ -440,6 +440,20 @@ public static class StandardExtensions
     }
 
     /// <summary>
+    /// Run each script in it's own transaction
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="excludeScriptsFromTransactionThatContainPhrase">If this phrase is found the script will NOT be used in a transaction</param>
+    /// <returns></returns>
+    public static UpgradeEngineBuilder WithTransactionByConvention(this UpgradeEngineBuilder builder, string excludeScriptsFromTransactionThatContainPhrase)
+    {
+        builder.Configure(c => c.ConnectionManager.TransactionMode = TransactionMode.TransactionByConvention);
+        builder.ExcludeScriptsFromTransactionThatContainPhrase = excludeScriptsFromTransactionThatContainPhrase;
+
+        return builder;
+    }
+
+    /// <summary>
     /// Adds all scripts ending in '.sql' found as embedded resources in the given assemblies, using the default <see cref="Encoding" />.
     /// </summary>
     /// <param name="builder">The builder.</param>

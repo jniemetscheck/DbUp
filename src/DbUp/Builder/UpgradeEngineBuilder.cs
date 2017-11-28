@@ -11,6 +11,10 @@ namespace DbUp.Builder
     public class UpgradeEngineBuilder
     {
         private readonly List<Action<UpgradeConfiguration>> callbacks = new List<Action<UpgradeConfiguration>>();
+        /// <summary>
+        /// If this phrase is found the script will NOT be used in a transaction
+        /// </summary>
+        public string ExcludeScriptsFromTransactionThatContainPhrase;
 
         /// <summary>
         /// Adds a callback that will be run to configure the upgrader when Build is called.
@@ -18,7 +22,18 @@ namespace DbUp.Builder
         /// <param name="configuration">The configuration.</param>
         public void Configure(Action<UpgradeConfiguration> configuration)
         {
+            Configure(configuration, null);
+        }
+
+        /// <summary>
+        /// Adds a callback that will be run to configure the upgrader when Build is called.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="excludeScriptsFromTransactionThatContainPhrase">If this phrase is found the script will NOT be used in a transaction</param>
+        public void Configure(Action<UpgradeConfiguration> configuration, string excludeScriptsFromTransactionThatContainPhrase)
+        {
             callbacks.Add(configuration);
+            ExcludeScriptsFromTransactionThatContainPhrase = excludeScriptsFromTransactionThatContainPhrase;
         }
 
         /// <summary>

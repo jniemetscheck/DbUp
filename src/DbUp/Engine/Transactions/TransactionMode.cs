@@ -20,6 +20,11 @@ namespace DbUp.Engine.Transactions
         /// <summary>
         /// DbUp will create a new connection and transaction per script
         /// </summary>
-        TransactionPerScript
+        TransactionPerScript,
+
+        /// <summary>
+        /// DbUp will use a convention based strategy to determine whether the script will run in a transaction per script
+        /// </summary>
+        TransactionByConvention
     }
 }

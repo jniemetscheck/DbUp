@@ -60,6 +60,7 @@
     <Compile Include="Builder\UpgradeConfiguration.cs" />
     <Compile Include="Builder\UpgradeEngineBuilder.cs" />
     <Compile Include="Engine\Preprocessors\VariableSubstitutionSqlParser.cs" />
+    <Compile Include="Engine\Transactions\TransactionByConventionStrategry.cs" />
     <Compile Include="EnsureDatabase.cs" />
     <Compile Include="DeployChanges.cs" />
     <Compile Include="Engine\DelegateDisposable.cs" />
